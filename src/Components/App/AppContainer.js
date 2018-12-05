@@ -44,15 +44,15 @@ class App extends Component {
   _connectToWs = () => {
     const ws = new WebSocket(WS_URL);
     ws.addEventListener("message", message => {
-      const paredMessage = parseMessage(message.data);
+      const paredMessage = parseMessage(message);
       if(paredMessage !== null && paredMessage !== undefined) {
         this.setState(prevState => {
           return {
             ...prevState,
             blocks: [...paredMessage, ...prevState.blocks],
             transactions: [...paredMessage[0].data, ...prevState.transactions]
-          }
-        })
+          };
+        });
       }
     });
   };

@@ -14,7 +14,7 @@ export const stringToJSON = string => {
 
 export const parseMessage = message => {
   if(typeof message.data === "string") {
-    const { data } = message.data;
+    const { data } = message;
     const parsedMessage = stringToJSON(data);
     if(parsedMessage !== null) {
       const { type } = parsedMessage;
